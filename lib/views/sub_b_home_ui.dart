@@ -10,6 +10,16 @@ class SubBHomeUI extends StatefulWidget {
 class _SubBHomeUIState extends State<SubBHomeUI> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.white);
+    return Center(
+      child: Column(
+        children: [
+          Text(
+            "สายด่วน\nอุบัติเหตุ-เหตุฉุกเฉิน",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
   }
 }

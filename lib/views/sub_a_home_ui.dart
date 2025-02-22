@@ -11,17 +11,24 @@ class SubAHomeUI extends StatefulWidget {
 class _SubAHomeUIState extends State<SubAHomeUI> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text('สายด่วน THAILAND'),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(FontAwesomeIcons.circleExclamation),
-          ),
-        ],
-        centerTitle: true,
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Center(
+        child: Column(
+          children: [
+            Text(
+              "สายด่วน\nการเดินทาง",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            Image.asset(
+              'assets/images/pic1.jpg',
+              width: MediaQuery.of(context).size.width * 0.5,
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+          ],
+        ),
       ),
     );
   }

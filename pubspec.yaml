@@ -35,7 +35,6 @@ dependencies:
   cupertino_icons: ^1.0.8
   font_awesome_flutter: ^10.8.0
   salomon_bottom_bar: ^3.3.2
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

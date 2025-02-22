@@ -10,6 +10,16 @@ class SubCHomeUI extends StatefulWidget {
 class _SubCHomeUIState extends State<SubCHomeUI> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.white);
+    return Center(
+      child: Column(
+        children: [
+          Text(
+            "สายด่วน\nธนาคาร",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
   }
 }
