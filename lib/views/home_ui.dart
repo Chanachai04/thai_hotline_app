@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'package:thai_hotline_app/views/about_ui.dart';
 import 'package:thai_hotline_app/views/sub_a_home_ui.dart';
 import 'package:thai_hotline_app/views/sub_b_home_ui.dart';
 import 'package:thai_hotline_app/views/sub_c_home_ui.dart';
@@ -25,12 +25,20 @@ class _HomeUIState extends State<HomeUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('สายด่วน THAILAND'),
         centerTitle: true,
         backgroundColor: Colors.grey[400],
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.error_outline_rounded)),
+          IconButton(
+            onPressed:
+                () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AboutUI()),
+                ),
+            icon: Icon(Icons.error_outline_rounded),
+          ),
         ],
       ),
       bottomNavigationBar: SalomonBottomBar(

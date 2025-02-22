@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:introduction_screen/introduction_screen.dart';
 
 class SubCIntroductionCallUI extends StatefulWidget {
   const SubCIntroductionCallUI({super.key});
