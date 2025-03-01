@@ -39,7 +39,7 @@
 <img src="https://github.com/user-attachments/assets/dc4374dd-d9dc-4a15-bccf-12e7a5c3e3a0" width = "200px">
 <hr>
 
-# หน้า เกี่ยวกับ
+# หน้า About
 <img src="https://github.com/user-attachments/assets/20b33cfa-6068-4c46-b75f-2dfddd439543" width = "200px">
 <hr>
 
