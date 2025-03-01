@@ -27,7 +27,7 @@ class _HomeUIState extends State<HomeUI> {
     index: 0,
   );
   //? เอาไว้เก็บ index ที่จะแสดง
-  int indexShow = 1;
+  int indexShow = 0;
 
   @override
   Widget build(BuildContext context) {
