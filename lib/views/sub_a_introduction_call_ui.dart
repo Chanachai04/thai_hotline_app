@@ -13,21 +13,30 @@ class _SubAIntroductionCallUIState extends State<SubAIntroductionCallUI> {
     return Center(
       child: Column(
         children: [
-          Image.asset(
-            'assets/images/pic1.jpg',
-            height: MediaQuery.of(context).size.height * 0.4,
+          Container(
+            height: MediaQuery.of(context).size.height * 0.25,
+            width: MediaQuery.of(context).size.width * 0.7,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              image: DecorationImage(
+                image: AssetImage('assets/images/pic1.jpg'),
+                fit: BoxFit.fill,
+              ),
+            ),
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
           Text.rich(
             TextSpan(
               text:
                   'เมื่อต้องเดินทางทั้งในเมือง ออกต่างจังหวัด\nจะใกล้หรือไกลเพียงใด\nสอบถามข้อมูลการเดินทาง การจราจร\nทางด่วน ทางหลัก ทางรอง\nเส้นทางเลี่ยงการจราจรติดขัด\nข้อมูลรถทัวร์ รถไฟ ขสมก. BTS MRT\nชักช้าอยู่ใย ',
+              style: TextStyle(fontSize: 16),
               children: [
                 TextSpan(
                   text: "โทรเลย!!!",
                   style: TextStyle(
                     color: Colors.red,
                     fontWeight: FontWeight.bold,
+                    fontSize: 16,
                   ),
                 ),
               ],

@@ -1,4 +1,6 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SubDHomeUI extends StatefulWidget {
@@ -9,6 +11,7 @@ class SubDHomeUI extends StatefulWidget {
 }
 
 class _SubDHomeUIState extends State<SubDHomeUI> {
+  //? เก็บที่อยู่รุปภาพในรูปแบบ List
   List<String> imageShow = [
     'assets/images/utility02.png',
     'assets/images/utility01.png',
@@ -20,17 +23,19 @@ class _SubDHomeUIState extends State<SubDHomeUI> {
     'assets/images/utility07.png',
     'assets/images/utility08.png',
   ];
-  List<String> textShow = [
+  //? เก็บข้อความในรูปแบบ List
+  List<String> messageShow = [
     'ไฟฟ้านครหลวง',
     'ไฟฟ้าส่วนภูมิภาค',
     'ไฟฟ้าฝ่ายผลิต',
     'การประปานครหลวง',
-    'การประปาส่วนภูมิภาค.',
+    'การประปาส่วนภูมิภาค',
     'True',
     'Dtac',
     'AIS',
     'TOT',
   ];
+  //? เก็บเบอร์โทรในรูปแบบ List
   List<String> phoneShow = [
     '1130',
     '1129',
@@ -42,10 +47,27 @@ class _SubDHomeUIState extends State<SubDHomeUI> {
     '1175',
     '1100',
   ];
-
+  //? func ที่เอาไว้โทรหาเบอร์ โดยรับ parameter เป็น phoneNumber
   Future<void> _makePhoneCall(String phoneNumber) async {
     final Uri launchUri = Uri(scheme: 'tel', path: phoneNumber);
     await launchUrl(launchUri);
+  }
+
+  //? fonc ที่เอาไว้แสดง dialog โดยรับ parameter เป็น context และ index
+  //? BuildContext เป็นอ็อบเจ็กต์ที่อ้างถึงตำแหน่งของวิดเจ็ตในโครงสร้างของ UI
+  Future<void> _showDialog(BuildContext context, int index) async {
+    final result = await showOkCancelAlertDialog(
+      context: context,
+      title: "ยืนยันการดำเนินการ",
+      message: "คุณแน่ใจหรือไม่ว่าต้องการดำเนินการนี้?",
+      okLabel: "ตกลง",
+      cancelLabel: "ยกเลิก",
+    );
+    //? เช็คว่าผู้ใช้กดปุ่ม "ตกลง" หรือไม่ ถ้าใช่ให้โทรหาเบอร์
+    if (result == OkCancelResult.ok) {
+      //? เรียกใช้ func _makePhoneCall โดยส่ง argument เป็น phoneShow[index]
+      _makePhoneCall(phoneShow[index]);
+    }
   }
 
   @override
@@ -61,20 +83,21 @@ class _SubDHomeUIState extends State<SubDHomeUI> {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            Image.asset(
-              'assets/images/pic4.jpg',
-              width: MediaQuery.of(context).size.width * 0.5,
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             Expanded(
               child: ListView.builder(
+                //? เปลี่ยนการเลื่อนจอเป็นแนวตั้ง
                 scrollDirection: Axis.vertical,
+                //? แสดงรายการตามจำนวนใน imageShow
                 itemCount: imageShow.length,
+                //? กำหนดเนื้อหาจะแสดงอย่างไร
                 itemBuilder: (context, index) {
                   return InkWell(
-                    onTap: () => _makePhoneCall(phoneShow[index]),
+                    //? เมื่อคลิกให้เรียกใช้ func _showDialog โดยส่ง argument เป็น context และ index
+                    onTap: () {
+                      _showDialog(context, index);
+                    },
                     child: Container(
-                      height: MediaQuery.of(context).size.height * 0.085,
+                      height: MediaQuery.of(context).size.height * 0.09,
                       margin: EdgeInsets.only(
                         bottom: MediaQuery.of(context).size.height * 0.02,
                       ),
@@ -86,7 +109,16 @@ class _SubDHomeUIState extends State<SubDHomeUI> {
                         padding: const EdgeInsets.all(10),
                         child: Row(
                           children: [
-                            Image.asset(imageShow[index], width: 50),
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.1,
+                              height: MediaQuery.of(context).size.height * 0.1,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  //? แสดงรุปแต่ละรูปใน imageShow โดยอ้างถึงตำแหน่ง index
+                                  image: AssetImage(imageShow[index]),
+                                ),
+                              ),
+                            ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.03,
                             ),
@@ -95,17 +127,23 @@ class _SubDHomeUIState extends State<SubDHomeUI> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  textShow[index],
+                                  //? แสดงข้อความแต่ละข้อความใน messageShow โดยอ้างถึงตำแหน่ง index
+                                  messageShow[index],
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18,
                                   ),
                                 ),
-                                Text(phoneShow[index]),
+                                Text(
+                                  //? แสดงเบอร์โทรแต่ละเบอร์โทรใน phoneShow โดยอ้างถึงตำแหน่ง index
+                                  phoneShow[index],
+                                  style: TextStyle(fontSize: 16),
+                                ),
                               ],
                             ),
+                            //? ใช้เติมช่องว่างระหว่างวิดเจ็ตอื่นๆ ใน Row หรือ Column โดยอัตโนมัติ
                             Spacer(),
-                            Icon(Icons.call),
+                            Icon(FontAwesomeIcons.phone, color: Colors.green),
                           ],
                         ),
                       ),

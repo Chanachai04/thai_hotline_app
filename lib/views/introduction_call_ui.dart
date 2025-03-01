@@ -17,6 +17,7 @@ class _IntroductionCallUIState extends State<IntroductionCallUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width * 0.05,
@@ -28,20 +29,40 @@ class _IntroductionCallUIState extends State<IntroductionCallUI> {
             PageViewModel(title: '', bodyWidget: SubCIntroductionCallUI()),
             PageViewModel(title: '', bodyWidget: SubDIntroductionCallUI()),
           ],
+          //? ตกแต่ง dot ด้านล่าง
+          dotsDecorator: DotsDecorator(
+            size: Size.square(10.0),
+            activeSize: Size(20.0, 10.0),
+            activeColor: Colors.lightBlue,
+            color: Colors.lightBlue,
+            spacing: EdgeInsets.symmetric(horizontal: 3.0),
+            activeShape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25.0),
+            ),
+          ),
           showSkipButton: true,
-          skip: Text("ข้าม", style: TextStyle(color: Colors.black)),
+          skip: Text(
+            "ข้าม",
+            style: TextStyle(color: Colors.black, fontSize: 16),
+          ),
           showNextButton: true,
-          next: Icon(Icons.arrow_forward_ios, color: Colors.black),
+          next: Icon(Icons.arrow_forward_ios, color: Colors.black, size: 20),
           showDoneButton: true,
-          done: Text("โทรเลย", style: TextStyle(color: Colors.black)),
-          //? Navigator to SubAHomeUI
+          done: Text(
+            "โทรเลย",
+            style: TextStyle(color: Colors.black, fontSize: 16),
+          ),
+          //? ตกแต่ง animation เปลี่ยนหน้า
+          animationDuration: 400,
+          //? ตกแต่ง background
+          globalBackgroundColor: Colors.white,
+          //? Navigator to HomeUI
           onDone: () {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => HomeUI()),
             );
           },
-          scrollPhysics: ClampingScrollPhysics(),
         ),
       ),
     );

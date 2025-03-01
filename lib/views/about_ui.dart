@@ -13,12 +13,12 @@ class _AboutUIState extends State<AboutUI> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('สายด่วน THAILAND'),
+        title: Text('สายด่วน THAILAND', style: TextStyle(color: Colors.white)),
         centerTitle: true,
-        backgroundColor: Colors.grey[400],
+        backgroundColor: Colors.lightBlue,
         leading: InkWell(
           onTap: () => Navigator.pop(context),
-          child: Icon(Icons.arrow_back_ios_new),
+          child: Icon(Icons.arrow_back_ios_new, color: Colors.white),
         ),
       ),
       body: Center(
@@ -42,7 +42,6 @@ class _AboutUIState extends State<AboutUI> {
               child: Image.asset('assets/icon/me.jpg', width: 200),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-
             Text(
               "6652410007\nนายชนะชัย เบญมาตย์\ns665210007@sau.ac.th\nDTI\nเทคโนโลยีดิจิตอลและนวัตกรรม",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),

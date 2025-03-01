@@ -12,22 +12,34 @@ class _SubBIntroductionCallUIState extends State<SubBIntroductionCallUI> {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            'assets/images/pic2.jpg',
-            height: MediaQuery.of(context).size.height * 0.4,
+          Container(
+            height: MediaQuery.of(context).size.height * 0.25,
+            width: MediaQuery.of(context).size.width * 0.7,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+
+              image: DecorationImage(
+                image: AssetImage('assets/images/pic2.jpg'),
+                fit: BoxFit.fill,
+              ),
+            ),
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+
           Text.rich(
             TextSpan(
               text:
                   'อุบัติเหตุ ป่วยฉุกเฉิน  ไฟใหม้\nรถหาย สัตว์ร้านเข้าบ้าน\nทุกอย่างเกินขึ้นได้ตลอดเวลา\nจะดีกว่าไหม\nเมื่อพบเจออุบัติเหตุ เหตุด่วน เหตุร้าน\nสามารโทรแจ้งได้ทันท่วงที\nไม่ต้องรอ ',
+              style: TextStyle(fontSize: 16),
               children: [
                 TextSpan(
                   text: "โทรเลย!!!",
                   style: TextStyle(
                     color: Colors.red,
                     fontWeight: FontWeight.bold,
+                    fontSize: 16,
                   ),
                 ),
               ],

@@ -13,21 +13,30 @@ class _SubCIntroductionCallUIState extends State<SubCIntroductionCallUI> {
     return Center(
       child: Column(
         children: [
-          Image.asset(
-            'assets/images/pic3.jpg',
-            height: MediaQuery.of(context).size.height * 0.4,
+          Container(
+            height: MediaQuery.of(context).size.height * 0.25,
+            width: MediaQuery.of(context).size.width * 0.7,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              image: DecorationImage(
+                image: AssetImage('assets/images/pic3.jpg'),
+                fit: BoxFit.fill,
+              ),
+            ),
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
           Text.rich(
             TextSpan(
               text:
                   'เมื่อเงินคือสิ่งสำคัญสำหรับการดำเนินชีวิต\nกิน เที่ยว ซื้อสินค้า\nการเดินทาง การรักษาพยาบาล\nหรือโดนเหตุมิจฉาชีพ\nแก๊งคอลเซ็นเตอร์หลอกลวง\nสามารถติดต่อธนาคารโดยตรง\nได้เลย ',
+              style: TextStyle(fontSize: 16),
               children: [
                 TextSpan(
                   text: "โทรเลย!!!",
                   style: TextStyle(
                     color: Colors.red,
                     fontWeight: FontWeight.bold,
+                    fontSize: 16,
                   ),
                 ),
               ],
